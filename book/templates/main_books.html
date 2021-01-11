@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Library Web Application
+{% endblock %}
+
+{% block content %}
+{% for book in books %}
+    {% include 'card.html' %}
+{% endfor %}
+{% endblock %}

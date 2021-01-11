@@ -1,0 +1,64 @@
+{% extends 'base_.html' %}
+{% load static %}
+
+{% block title %}
+    BunnyLib | {{ user.first_name }}, {{ user.last_name }}
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/authentication/username.css' %}">
+<div class="user__holder">
+    <div class="moderate__buttons">
+        <ul>
+            <li><a href="{% url 'user_update' %}" class="btn btn-edit">Edit profile</a></li>
+            <li><a href="{% url 'change_password' %}" class="btn btn-pass">Change password</a></li>
+            <li><a href="{% url 'user_delete' %}" class="btn btn-delete">Delete</a></li>
+        </ul>
+    </div>
+    <div class="user-title">
+        <h1>User profile</h1>
+    </div>
+    <div class="user__holder-content">
+        <div class="user__holder-image">
+            <div class="image">
+                <img src="{{ user.user_photo_or_default }}" alt="user image">
+            </div>
+        </div>
+        <div class="user__holder-text">
+            <div class="user__text user__fname">
+                First name: <span class="user__fname-name">{{ user.first_name }}</span>
+            </div>
+            <div class="user__text user__lname">
+                Last name: <span class="user__lname-name">{{ user.last_name }}</span>
+            </div>
+            <div class="user__text user__email">
+                Email: <span class="user__email-email">{{ user.email }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="orders">
+        <div class="container">
+            <div class="user__orders">
+                <table>
+                    <tr>
+                        <th>№ Order</th>
+                        <th>Book name</th>
+                        <th>Start date</th>
+                        <th>Planned end date</th>
+                        <th>End date</th>
+                    </tr>
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.book_name }}</td>
+                        <td>{{ order.created_at }}</td>
+                        <td>{{ order.planned_end_at }}</td>
+                        <td>{{ order.end_at }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

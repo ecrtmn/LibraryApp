@@ -1,0 +1,76 @@
+{% extends 'base_.html' %}
+{% load static %}
+
+{% block title %}
+    BunnyLib | Author {{ author.patronymic }}
+{% endblock %}
+
+{% block moderate %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/author/author_by_id.css' %}">
+<div class="moderate__buttons">
+    <a href="{% url 'author_update' author.id %}" class="btn btn-edit">Edit</a>
+    <a href="{% url 'author_delete' author.id %}" class="btn btn-delete">Delete</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/author/author_by_id.css' %}">
+<div class="author__holder">
+    <div class="author-title">
+        <h1>{{ author.patronymic }}</h1>
+    </div>
+    <div class="author__holder-content">
+        <div class="author__holder-image">
+            <div class="image">
+                <img src="{{ author.author_photo_or_default }}" alt="author image">
+            </div>
+        </div>
+        <div class="author__holder-text">
+            <div class="author__row">
+                Name: <span class="author__row-name">{{ author.name }}</span>
+            </div>
+             <div class="author__row">
+                Surname: <span class="author__row-surname">{{ author.surname }}</span>
+            </div>
+            <div class="author__row">
+                Biography: <span class="author__row-bio">{{ author.bio }}</span>
+            </div>
+            <div class="author__row">
+                Number of books : <span class="author__row-all__value">{{ number_of_books }}</span>
+            </div>
+            <div class="author__row">
+                Number of available books : <span class="author__row-available__value">10</span>
+            </div>
+        </div>
+    </div>
+    <div class="author__popular">
+        <div class="author__popular-title">
+            <h2 class="author__popular-title__value">Author's popular books</h2>
+        </div>
+        <div class="author__popular-listing">
+            {% for book in books %}
+            <div class="book">
+                <div class="book__image">
+                    <img class="book__cover" src="{{ book.book_cover_or_default }}" alt="book cover">
+                </div>
+                <div class="book__text">
+                    <div class="book__text-info">
+                        <div class="book__text-row">
+                            <h3 class="name">Name: </h3>
+                            <span class="value">{{ book.name }}</span>
+                        </div>
+                        <div class="book__text-row">
+                            <h3 class="name">Description: </h3>
+                            <span class="value">{{ book.description }}</span>
+                        </div>
+                    </div>
+                   <div class="book__text-buttons">
+                    <a href="{{ book.get_absolute_url }}" class="btn btn-grey ">More</a>
+                   </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

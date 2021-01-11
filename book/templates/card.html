@@ -1,0 +1,18 @@
+{% load static %}
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{% static 'media/default_book.png' %}" class="card-img">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ book.name }}</h5>
+        <p class="card-text">{{ book.description }}</p>
+        <p class="card-text">{{ book.authors.name }}</p>
+        <p class="card-text"><small class="text-muted">Available books: {{ book.count }}</small></p>
+        <a href="{{ book.get_absolute_url }}" class="btn btn-outline-info">Look closer</a>
+        <button type="button" class="btn btn-outline-success">Borrow</button>
+      </div>
+    </div>
+  </div>
+</div>

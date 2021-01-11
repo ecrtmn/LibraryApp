@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ user.first_name }}, {{ user.last_name }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ user.first_name }}</h1>
+<h1>{{ user.last_name }}</h1>
+<h1>{{ user.email }}</h1>
+<h1>{{ user.created_at }}</h1>
+<h1>{{ user.updated_at }}</h1>
+<h1>{{ user.role }}</h1>
+{% for order in orders %}
+    {{ order.id }}
+    {{ order.book_id }}
+    {{ order.book_name }}
+    {{ order.planned_end_at }}
+{% endfor %}
+<h1>{{ user.order.book }}</h1>
+{% endblock %}

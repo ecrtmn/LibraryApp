@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="custom_registration_panel">
+  <h3>REGISTRATION</h3>
+  <form action="#" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="form-group">
+      {% if field.errors %}
+      <div class="alert alert-danger">
+        {{ field.errors }}
+      </div>
+      {%endif%}
+      {{field.label}}
+      {{field}}
+    </div>
+    {%endfor%}
+  <p>Already have an account? <a href="{% url 'custom_login' %}" class="ml-2">Login</a></p>
+  <button type="submit" class="btn btn-outline-info">Register User</button>
+  </form>
+</div>
+{% endblock %}
+
+
+

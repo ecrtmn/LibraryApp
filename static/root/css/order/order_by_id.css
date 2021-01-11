@@ -1,0 +1,223 @@
+.container {
+    width: 100%;
+    max-width: 1140px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.moderate__buttons {
+    position: fixed;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 10px;
+    opacity: 50%;
+    display: flex;
+    bottom: 110px;
+    right: 10px;
+    flex-direction: column;
+}
+
+.moderate__buttons a {
+    margin: 10px;
+}
+
+.moderate__buttons:hover {
+    opacity: 100%;
+}
+
+.btn-edit {
+    padding: 5px;
+    color: teal;
+}
+
+.btn-edit:hover {
+    background-color: teal;
+    color: white;
+}
+
+.btn-delete {
+    padding: 5px;
+    color: tomato;
+}
+
+.btn-delete:hover {
+    background-color: tomato;
+    color: white;
+}
+
+.order__holder {
+    position: relative;
+}
+
+.btn {
+    display: inline-block;
+    border-radius: 6px;
+    border: 1px solid;
+    font-size: 18px;
+    line-height: 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.order__holder-content {
+    display: flex;
+}
+
+.order-title {
+    text-align: center;
+}
+
+.order__content-order {
+    width: 80%;
+    margin: 0 auto;
+}
+
+table {
+    background-color: rgb(200, 200, 200);
+    border-radius: 5px;
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    margin: 0 auto;
+    width: 33%;
+    padding: 8px;
+}
+
+td {
+    border: 1px solid gray
+}
+
+.order__content-book-and-user {
+    display: flex;
+    height: 400px;
+    justify-content: space-evenly;
+}
+
+.order__content-book {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 10px 110px;
+    border: 1px solid gray;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, .3);
+    border-radius: 5px;
+}
+
+.order__content-user {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 10px 110px;
+    border: 1px solid gray;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, .3);
+    border-radius: 5px;
+
+}
+
+.order__content-book-cover {
+    margin: 10px auto;
+    height: 200px;
+    width: 150px;
+}
+
+.order__content-book-cover img {
+    height: 100%;
+    width: 100%;
+}
+
+.order__content-book-text .book__name {
+    margin: 10px;
+}
+
+.order__content-book-text .book__author {
+    margin: 10px;
+}
+
+.order__content-btn-book {
+    display: flex;
+    margin: auto auto 10px auto;
+    justify-content: center;
+    width: 60%;
+}
+
+.order__content-btn-book a {
+    width: 100%;
+    padding: 5px;
+    color:rgb(46, 178, 27)
+}
+
+.order__content-btn-book a:hover {
+    background-color: rgb(46, 178, 27);
+    color: white;
+}
+
+.order__content-user-img {
+    margin: 30px auto 30px auto;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    overflow: hidden;
+}
+
+.order__content-user-img img {
+    height: 100%;
+    width: 100%;
+}
+
+.order__content-user-text .user__fname {
+    margin: 10px;
+}
+
+.order__content-user-text .user__email {
+    margin: 10px;
+}
+
+
+.order__content-btn-user {
+    display: flex;
+    margin: auto auto 10px auto;
+    justify-content: center;
+    width: 60%;
+}
+
+.order__content-btn-user a {
+    width: 100%;
+    padding: 5px;
+    color:rgb(46, 178, 27)
+}
+
+.order__content-btn-user a:hover {
+    background-color: rgb(46, 178, 27);
+    color: white;
+}
+
+.confirmation__buttons {
+    display: flex;
+    margin: 30px auto;
+    justify-content: center;
+}
+
+.confirmation__buttons a {
+    margin: 30px;
+    padding: 15px;
+}
+
+.btn-confirm {
+    color: teal;
+}
+
+.btn-confirm:hover {
+    color: white;
+    background-color: teal;
+}
+
+.btn-cancel {
+    color: tomato;
+}
+
+.btn-cancel:hover {
+    background-color: tomato;
+    color: white;
+}

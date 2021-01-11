@@ -1,0 +1,61 @@
+{% extends 'base_.html' %}
+{% load static %}
+
+{% block title %}
+    BunnyLib | Orders
+{% endblock %}
+
+{% block moderate %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/order/orders_all.css' %}">
+<div class="create__buttons">
+    <a href="#" class="btn btn-create-book">Create Book</a>
+    <a href="#" class="btn btn-create-author">Create Author</a>
+    <a href="#" class="btn btn-create-order">Create Order</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/order/orders_all.css' %}">
+<div class="order__holder">
+    <div class="moderate__buttons">
+        <ul>
+            <li><a href="" class="btn btn-create">Create order</a></li>
+        </ul>
+    </div>
+    <div class="order-title">
+        <h1>Orders</h1>
+    </div>
+    <div class="orders__all">
+        <div class="container">
+            <div class="users__orders">
+                <table>
+                    <tr>
+                        <th>№ Order</th>
+                        <th>Book name</th>
+                        <th>Start date</th>
+                        <th>Planned end date</th>
+                        <th>End date</th>
+                        <th>Show more</th>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Alice in wonderland</td>
+                        <td>2020-12-25</td>
+                        <td>2021-01-12</td>
+                        <td></td>
+                        <td><a href="#" class="btn btn-more">More</a></td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Alice in wonderland</td>
+                        <td>2020-12-25</td>
+                        <td>2021-01-12</td>
+                        <td></td>
+                        <td><a href="#" class="btn btn-more">More</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

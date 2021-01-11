@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    {{ book.name }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ book.name }}</h1>
+<p>Amount of books: {{ book.count }}</p>
+<p>Author: {{ authors }}</p>
+<p>Description: {{ book.description }}</p>
+<img src="{{ book.book_cover_or_default }}" class="card-img">
+
+{% endblock %}

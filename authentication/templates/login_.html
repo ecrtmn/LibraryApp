@@ -1,0 +1,39 @@
+{% extends 'base_.html' %}
+{% load static %}
+
+{% block title %}
+    BunnyLib | Login
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/authentication/login.css' %}">
+<div class="user__create">
+    <div class="user__login-title">
+        <h1>Login</h1>
+    </div>
+    <form class="input__form login--form" action="" method="POST">
+        {% csrf_token %}
+        <div class="input__form-user">
+            <label class="form__label" for="email">
+                <i class="fas fa-envelope"></i>
+            </label>
+            <input type="email" name="email" id="email" placeholder="Users email" class="form-control user-email">
+        </div>
+        <div class="input__form-user">
+            <label class="form__label" for="password">
+                <i class="fas fa-key"></i>
+            </label>
+            <input type="password" name="password" id="password" placeholder="Users password" class="form-control user-password">
+        </div>
+        {% for message in messages %}
+            <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</div>
+        {% endfor %}
+        <div class="input__form-buttons">
+            <button class= "btn btn-login" type="submit">
+                Login
+            </button>
+        </div>
+        <div class="input__form-message">Don't have an account? <a href="{% url 'custom_registration' %}" class="">Sign Up</a></div>
+    </form>
+</div>
+{% endblock %}

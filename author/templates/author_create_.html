@@ -1,0 +1,56 @@
+{% extends 'base_.html' %}
+{% load static %}
+
+{% block title %}
+    BunnyLib | Author create
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/author/author_create.css' %}">
+<div class="author__create">
+    <div class="author__create-title">
+        <h1>Create an author</h1>
+    </div>
+    <form class="input__form" enctype="multipart/form-data" action="" method="POST">
+        {% csrf_token %}
+            <div class="input__form-author">
+                <label class="form__label" for="name">
+                    Authors name:
+                </label>
+                {{ form.name }}
+            </div>
+            <div class="input__form-author">
+                <label class="form__label" for="surname">
+                    Authors surname:
+                </label>
+                {{ form.surname }}
+            </div>
+            <div class="input__form-author">
+                <label class="form__label" for="patronymic">
+                    Authors patronymic:
+                </label>
+                {{ form.patronymic }}
+            </div>
+            <div class="input__form-author">
+                <label class="form__label" for="bio">
+                    Authors biography:
+                </label>
+                {{ form.bio }}
+            </div>
+            <div class="input__form-author">
+                <label class="form__label" for="file">
+                    Authors photo:
+                </label>
+                {{ form.photo }}
+            </div>
+        <div class="input__form-buttons">
+            <button class="btn btn-confirm" type="submit">
+                Confirm
+            </button>
+            <button class="btn btn-cancel" type="button" onClick="javascript:history.go(-1);">
+                Back
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

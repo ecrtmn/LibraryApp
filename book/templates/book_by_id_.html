@@ -1,0 +1,45 @@
+{% extends 'base_.html' %}
+{% load static %}
+
+{% block title %}
+    BunnyLib | Book {{ book.name }}
+{% endblock %}
+
+{% block moderate %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book/book_by_id.css' %}">
+<div class="moderate__buttons">
+    <a href="{% url 'book_update' book.id %}" class="btn btn-edit">Edit</a>
+    <a href="{% url 'book_delete' book.id %}" class="btn btn-delete">Delete</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book/book_by_id.css' %}">
+<div class="book__holder">
+    <div class="book-title">
+        <h1>{{ book.name }}</h1>
+    </div>
+    <div class="book__holder-content">
+        <div class="book__holder-cover">
+            <div class="cover">
+                <img src="{{ book.book_cover_or_default }}" alt="book cover">
+            </div>
+            <div class="order">
+                <a class="btn btn-green" href="#">Order</a>
+            </div>
+        </div>
+        <div class="book__holder-text">
+            <div class="book__author">
+                <h3>Author: <span class="book__author-author">{{ authors }}</span></h3>
+            </div>
+            <div class="book__available">
+                Available:
+                <span class="book__available-count">{{ book.count }}</span>
+            </div>
+            <div class="book__plot">
+                Description: <span class="book__plot-plot">{{ book.description }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

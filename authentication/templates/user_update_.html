@@ -1,0 +1,45 @@
+{% extends 'base_.html' %}
+{% load static %}
+
+{% block title %}
+    BunnyLib | User update
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/authentication/user_update_my.css' %}">
+<div class="user__update">
+    <div class="user__update-title">
+        <h1>Update the user</h1>
+    </div>
+    <form class="input__form" action="" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+            <div class="input__form-user">
+                <label class="form__label" for="first_name">
+                    First name:
+                </label>
+                {{ form.first_name }}
+            </div>
+            <div class="input__form-user">
+                <label class="form__label" for="last_name">
+                    Last name:
+                </label>
+                {{ form.last_name }}
+            </div>
+            <div class="input__form-user">
+                <label class="form__label" for="file">
+                    Photo:
+                </label>
+                {{ form.photo }}
+            </div>
+            <div class="input__form-user">
+        <div class="input__form-buttons">
+            <button class= "btn btn-confirm" type="submit">
+                Confirm
+            </button>
+            <button class= "btn btn-cancel" type="button">
+                Back
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

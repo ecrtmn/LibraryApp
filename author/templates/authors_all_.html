@@ -1,0 +1,51 @@
+{% extends 'base_.html' %}
+{% load static %}
+
+{% block title %}
+    BunnyLib | Authors
+{% endblock %}
+
+{% block moderate %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/author/authors_all.css' %}">
+<div class="create__buttons">
+    <a href="#" class="btn btn-create-book">Create Book</a>
+    <a href="#" class="btn btn-create-author">Create Author</a>
+    <a href="#" class="btn btn-create-order">Create Order</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/author/authors_all.css' %}">
+<div class="authors__listing">
+    {% for author in authors %}
+    <div class="author">
+        <div class="author__image">
+            <img class="author__cover" src="{{ author.author_photo_or_default }}" alt="book cover">
+        </div>
+        <div class="author__text">
+            <div class="author__text-info">
+                <div class="author__text-row">
+                    <h3 class="name">Patronymic: </h3>
+                    <span class="value">{{ author.patronymic }}</span>
+                </div>
+                <div class="author__text-row">
+                    <h3 class="name">Name: </h3>
+                    <span class="value">{{ author.name }}</span>
+                </div>
+                <div class="author__text-row">
+                    <h3 class="name">Surname: </h3>
+                    <span class="value">{{ author.surname }}</span>
+                </div>
+            </div>
+           <div class="author__text-buttons">
+            <a href="{{ author.get_absolute_url }}" class="btn btn-grey ">About author</a>
+           </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+
+

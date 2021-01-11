@@ -1,0 +1,56 @@
+{% extends 'base_.html' %}
+{% load static %}
+
+{% block title %}
+    BunnyLib | Book create
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book/book_create.css' %}">
+<div class="book__create">
+    <div class="book__create-title">
+        <h1>Create a book</h1>
+    </div>
+    <form class="input__form" enctype="multipart/form-data" action="" method="POST">
+        {% csrf_token %}
+            <div class="input__form-book">
+                <label class="form__label" for="name">
+                    Book name:
+                </label>
+                {{ form.name }}
+            </div>
+            <div class="input__form-book">
+                <label class="form__label" for="description">
+                    Description:
+                </label>
+                {{ form.description }}
+            </div>
+            <div class="input__form-book">
+                <label class="form__label" for="count">
+                    Book count:
+                </label>
+                {{ form.count }}
+            </div>
+            <div class="input__form-book">
+                <label class="form__label" for="select">
+                    Authors:
+                </label>
+                {{ form.authors }}
+            </div>
+            <div class="input__form-book">
+                <label class="form__label" for="file">
+                    Cover:
+                </label>
+               {{ form.cover }}
+            </div>
+        <div class="input__form-buttons">
+            <button class= "btn btn-confirm" type="submit">
+                Confirm
+            </button>
+            <button class="btn btn-cancel" type="button" onClick="javascript:history.go(-1);">
+                Back
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ author.name }}, {{ author.surname }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ author.name }}</h1>
+<h1>{{ author.surname }}</h1>
+<h1>{{ author.patronymic }}</h1>
+<h1>{{ author.bio }}</h1>
+{% endblock %}

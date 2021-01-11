@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title%}
+  Orders of our library!
+{% endblock %}
+
+{% block content %}
+  <div class="btn-group" role="group">
+    <h5> <a href="{% url 'order_create' %}" class="btn btn-outline-secondary btn-sm">Add new order</a></h5>
+    <h5> <a href="{% url 'orders_all' %}" class="btn btn-outline-secondary btn-sm">Show all orders</a></h5>
+    <h5> <a href="{% url 'orders_not_returned' %}" class="btn btn-outline-secondary btn-sm">Show orders that not returned</a></h5>
+  </div>
+
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Username</th>
+          <th scope="col">Book</th>
+          <th scope="col">Created at</th>
+          <th scope="col">End at</th>
+          <th scope="col">Planned end at</th>
+          <th scope="col">Order details</th>
+          <th scope="col">Update order</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for order in orders %}
+        <tr>
+          <th scope="row">{{ order.id }}</th>
+          <td>{{ order.user.first_name }}</td>
+          <td>{{ order.book.name }}</td>
+          <td>{{ order.created_at }}</td>
+          <td>{{ order.end_at }}</td>
+          <td>{{ order.planned_end_at }}</td>
+          <td><a href="{{ order.get_absolute_url }}" class="btn btn-outline-secondary btn-sm">Show more</a></td>
+          <td><a href="{% url 'order_update' order.id %}" class="btn btn-outline-secondary btn-sm">Update</a></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

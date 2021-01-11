@@ -1,0 +1,256 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+<!--    <link rel="stylesheet" href="user_update.css">-->
+        <title>
+        {% block title %}
+            BunnyLib | Page
+        {% endblock %}
+    </title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            outline: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            text-rendering: optimizeSpeed;
+            line-height: 1.5;
+            font-family: 'Comfortaa';
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 30px 0 50px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1140px;
+            padding: 0 20px;
+            margin: 0 auto;
+        }
+
+        .header {
+            height: 70px;
+            background-color: black;
+            display: flex;
+            align-content: space-around;
+        }
+
+        .header__holder {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header__logo {
+            flex-shrink: 0;
+            margin-top: -15px;
+        }
+
+        .header-links {
+            text-decoration: none;
+            color: white;
+            transition: .3s;
+        }
+
+        .header-links:hover {
+            color: rgb(46, 178, 27);
+        }
+
+        .navlist {
+            display: flex;
+            width: 250px;
+        }
+
+        .navlist ul {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .navlist li {
+            padding: 0 20px;
+        }
+
+        .login-block {
+            display: flex;
+            align-items: center;
+        }
+
+        .login-block a {
+            padding: 0 20px;
+        }
+
+        .header__search {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 250px;
+        }
+
+        .header__search button {
+            position: absolute;
+            width: 18px;
+            height: 22px;
+            margin-left: -23px;
+            margin-top: 6px;
+            background-color: transparent;
+            border: 0;
+        }
+
+        .header__search button:hover {
+            fill: rgb(46, 178, 27);
+        }
+
+        .header__holder input {
+            width: 100%;
+            height: 30px;
+            padding: 0 37px 0 15px;
+            border-radius: 6px;
+        }
+
+        .footer {
+            background-color: black;
+        }
+
+        .footer__content {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer__content-logo {
+            margin: 20px 0;
+        }
+
+        .footer__content-about a{
+            text-decoration: none;
+            color: white;
+            transition: .3s;
+        }
+
+        .footer__content-about a:hover {
+            color: rgb(46, 178, 27);
+        }
+
+        .footer__content-socials ul {
+            display: flex;
+        }
+
+        .footer__content-socials li {
+            height: 24px;
+            width: 24px;
+            margin: 0 10px;
+        }
+
+        .footer__content-socials svg {
+            fill: white;
+            height: 100%;
+            width: 100%;
+            transition: .3s;
+        }
+
+        .footer__content-socials svg:hover{
+            fill: rgb(46, 178, 27);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+           <div class="header__holder">
+                <a class="header__logo" href="{% url 'books_main' %}">
+                    <img src="{% static 'media/LOGO_bunnyLib.png' %}" alt="Library logo">
+                </a>
+                <nav class="navlist">
+                    <ul>
+                        <li><a class="header-links" href="{% url 'authors_all' %}">Authors</a></li>
+                        <li><a class="header-links" href="#">Orders</a></li>
+                    </ul>
+                </nav>
+                <div class="header__search">
+                    <form>
+                        <input type="text" placeholder="Search">
+                        <button type="submit">
+                            <svg viewBox="0 0 30.2 30.2">
+                                <path d="M20.2 3.5a11.8 11.8 0 10-1.6 18c0 .5.3 1 .7 1.3l6.7 6.7a2.5 2.5 0 103.5-3.5l-6.7-6.7c-.4-.4-.8-.6-1.3-.7 3.2-4.6 2.8-11-1.3-15.1zM18 18A8.8 8.8 0 115.6 5.6 8.8 8.8 0 0118 18z"/>
+                              </svg>
+                        </button>
+                    </form>
+                </div>
+                <div class="login-block">
+                    {% if request.user.is_authenticated %}
+                    <a id="user-btn" class="login-block__button header-links" href="{% url 'my_user' %}">{{ user.first_name }}</a>
+                    <a id="logout-btn" class="login-block__button header-links" href="{% url 'custom_logout' %}">Logout</a>
+                    {% else %}
+                    <a id="login-btn" class="login-block__button header-links" href="{% url 'custom_login' %}">Sign In</a>
+                    <a id="register-btn" class="login-block__button header-links" href="{% url 'custom_registration' %}">Sign Up</a>
+                    {% endif %}
+                </div>
+           </div>
+        </div>
+    </header>
+    <main class="content">
+        {% block moderate %}
+        {% endblock %}
+        <div class="container">
+            {% block content %}
+              Some content
+            {% endblock %}
+        </div>
+     </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__content-logo">
+                    <img src="{% static 'media/LOGO_bunnyLib.png' %}" alt="Library logo">
+                </div>
+                <div class="footer__content-about">
+                    <a href="#">About</a>
+                </div>
+                <div class="footer__content-socials">
+                    <ul>
+                        <li>
+                            <a href="https://t.me/ecrtmn" class="telegram"><svg viewBox="0 -31 512 512"><path d="m123.195312 260.738281 63.679688 159.1875 82.902344-82.902343 142.140625 112.976562 100.082031-450-512 213.265625zm242.5-131.628906-156.714843 142.941406-19.519531 73.566407-36.058594-90.164063zm0 0"/></svg></a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/profile.php?id=100017204800457" class="facebook"><svg id="Bold" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512"><path d="m15.997 3.985h2.191v-3.816c-.378-.052-1.678-.169-3.192-.169-3.159 0-5.323 1.987-5.323 5.639v3.361h-3.486v4.266h3.486v10.734h4.274v-10.733h3.345l.531-4.266h-3.877v-2.939c.001-1.233.333-2.077 2.051-2.077z"/></svg></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/pavel-tverdokhleb-121824179/" class="linkedin"><svg id="Bold" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512"><path d="m23.994 24v-.001h.006v-8.802c0-4.306-.927-7.623-5.961-7.623-2.42 0-4.044 1.328-4.707 2.587h-.07v-2.185h-4.773v16.023h4.97v-7.934c0-2.089.396-4.109 2.983-4.109 2.549 0 2.587 2.384 2.587 4.243v7.801z"/><path d="m.396 7.977h4.976v16.023h-4.976z"/><path d="m2.882 0c-1.591 0-2.882 1.291-2.882 2.882s1.291 2.909 2.882 2.909 2.882-1.318 2.882-2.909c-.001-1.591-1.292-2.882-2.882-2.882z"/></svg></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

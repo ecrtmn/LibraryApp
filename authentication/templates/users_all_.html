@@ -1,0 +1,52 @@
+{% extends 'base_.html' %}
+{% load static %}
+
+{% block title %}
+    BunnyLib | Users
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/authentication/users_all.css' %}">
+<div class="user__holder">
+    <div class="moderate__buttons">
+        <ul>
+            <li><a href="#" class="btn btn-create">Create user</a></li>
+        </ul>
+    </div>
+    <div class="users-title">
+        <h1>Users</h1>
+    </div>
+    <div class="users__all">
+        <div class="container">
+            <div class="users__all-table">
+                <table>
+                    <tr>
+                        <th>№ User</th>
+                        <th>First name</th>
+                        <th>Second name</th>
+                        <th>Email</th>
+                        <th>Created at</th>
+                        <th>Updated at</th>
+                        <th>Role</th>
+                        <th>Is active</th>
+                        <th>More</th>
+                    </tr>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.last_name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.created_at }}</td>
+                        <td>{{ user.updated_at }}</td>
+                        <td>{{ user.role }}</td>
+                        <td>{{ user.is_active }}</td>
+                        <td><a href="{{ user.get_absolute_url }}" class="btn btn-more">More</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

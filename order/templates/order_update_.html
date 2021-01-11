@@ -1,0 +1,49 @@
+{% extends 'base_.html' %}
+{% load static %}
+
+{% block title %}
+    BunnyLib | Order update
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/order/order_update.css' %}">
+<div class="order__create">
+    <div class="order__create-title">
+        <h1>Update the order</h1>
+    </div>
+    <form class="input__form" action="" method="POST">
+            <div class="input__form-order">
+                <div class="form__label">User: </div>
+                <div class="form__value">Username</div>
+            </div>
+            <div class="input__form-order">
+                <div class="form__label">Book: </div>
+                <div class="form__value">Bookname</div>
+            </div>
+            <div class="input__form-order">
+                <div class="form__label">Start date: </div>
+                <div class="form__value">"13-12-2020"</div>
+            </div>
+            <div class="input__form-order">
+                <label class="form__label" for="planned_end_at">
+                    Planned end date:
+                </label>
+                <input type="date" name="planned_end_at" id="planned_end_at" class="form-control planned-end-title">
+            </div>
+            <div class="input__form-order">
+                <label class="form__label" for="end_at">
+                    End date:
+                </label>
+                <input type="date" name="end_at" id="end_at" class="form-control end_at-title">
+            </div>
+        <div class="input__form-buttons">
+            <button class= "btn btn-confirm" type="button">
+                Confirm
+            </button>
+            <button class= "btn btn-cancel" type="button">
+                Back
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
