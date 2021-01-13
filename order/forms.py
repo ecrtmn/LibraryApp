@@ -22,3 +22,15 @@ class OrderUpdateForm(forms.ModelForm):
             'planned_end_at': DatePickerInput(format='%Y-%m-%d'),
             'end_at': DatePickerInput(format='%Y-%m-%d'),
         }
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
+class OrderOnClick(forms.ModelForm):
+    # planned_end_at = forms.DateField(input_formats=['%Y-%m-%d'], widget=forms.DateInput(attrs={'id': 'datetimepicker'}))
+    planned_end_at = forms.DateField(widget=DateInput)
+    class Meta:
+        model = Order
+        fields = ['planned_end_at']

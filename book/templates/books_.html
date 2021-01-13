@@ -46,7 +46,7 @@
                 </div>
                 <div class="book__text-row">
                     <h3 class="name">Author: </h3>
-                    <span class="value">{{ book.authors }}</span>
+                    <span class="value">{{ book.authors.first }}</span>
                 </div>
                 <div class="book__text-row">
                     <h3 class="name">Description: </h3>
@@ -55,7 +55,7 @@
             </div>
            <div class="book__text-buttons">
             <a href="{{ book.get_absolute_url }}" class="btn btn-grey ">More</a>
-            <a href="#" class="btn btn-green">Order</a>
+            <a href="{% url 'order_on_click' book.id %}" class="btn btn-green">Order</a>
            </div>
         </div>
     </div>

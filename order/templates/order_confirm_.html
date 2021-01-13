@@ -12,49 +12,64 @@
         <h1>Order information</h1>
     </div>
     <div class="order__content">
-        <div class="order__content-order">
-            <table>
-                <tr>
-                    <th>Start date</th>
-                    <th>Planned end date</th>
-                </tr>
-                <tr>
-                    <td>13-12-2020</td>
-                    <td><form action="submit"><input type="date"></form></td>
-                </tr>
-            </table>
-        </div>
-        <div class="order__content-book-and-user">
-            <div class="order__content-book">
-                <div class="order__content-book-cover">
-                    <img src="image/book_cover.png" alt="book cover">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="order__content-order">
+                {% for value, error in form.errors.items %}
+                    {{ error }}
+                {% endfor %}
+                <table>
+                    <tr>
+                        <th>Enter your planned order end date</th>
+                    </tr>
+                    <tr>
+                        <td>{{ form.planned_end_at }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="order__content-book-and-user">
+                <div class="order__content-book">
+                    <div class="order__content-book-cover">
+                        <img src="{{ book.book_cover_or_default }}" alt="book cover">
+                    </div>
+                    <div class="order__content-book-text">
+                        <div class="book__name">Book: {{ book.name }}</div>
+                        <div class="book__author">Author: {{ book.authors.first }}</div>
+                    </div>
+                    <div class="order__content-btn-book">
+                        <a class="btn btn-book" href="{% url 'book_by_id' book.id %}">About book</a>
+                    </div>
                 </div>
-                <div class="order__content-book-text">
-                    <div class="book__name">Book: Book_name</div>
-                    <div class="book__author">Author: Author</div>
-                </div>
-                <div class="order__content-btn-book">
-                    <a class="btn btn-book" href="#">About book</a>
+                <div class="order__content-user">
+                    <div class="order__content-user-img">
+                        <img src="{{ user.user_photo_or_default }}" alt="user avatar">
+                    </div>
+                    <div class="order__content-user-text">
+                        <div class="user__fname">First name: {{ user.first_name }}</div>
+                        <div class="user__email">Email: {{ user.email }}</div>
+                    </div>
+                    <div class="order__content-btn-user">
+                        <a class="btn btn-user" href="{% url 'my_user' %}">User profile</a>
+                    </div>
                 </div>
             </div>
-            <div class="order__content-user">
-                <div class="order__content-user-img">
-                    <img src="image/username.png" alt="user avatar">
-                </div>
-                <div class="order__content-user-text">
-                    <div class="user__fname">First name: Pasha</div>
-                    <div class="user__email">Email: neofobos@gmail.com</div>
-                </div>
-                <div class="order__content-btn-user">
-                    <a class="btn btn-user" href="#">User profile</a>
-                </div>
+            <div class="confirmation__buttons">
+                <button class= "btn btn-confirm" type="submit">
+                    Confirm order
+                </button>
+                <button class="btn btn-cancel" type="button" onClick="javascript:history.go(-1);">
+                    Back
+                </button>
             </div>
-
-        </div>
-        <div class="confirmation__buttons">
-            <a href="#" class="btn btn-confirm">Confirm order</a>
-            <a href="#" class="btn btn-cancel">Cancel order</a>
-        </div>
+        </form>
     </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script>
+$(document).ready(function() {
+    $('.datepicker').datepicker();
+});
+</script>
 {% endblock %}

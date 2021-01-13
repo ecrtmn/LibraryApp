@@ -28,8 +28,8 @@
                     <th>End date</th>
                 </tr>
                 <tr>
-                    <td>13-12-2020</td>
-                    <td>21-12-2020</td>
+                    <td>{{ order.created_at }}</td>
+                    <td>{{ order.planned_end_at }}</td>
                     <td><form action="submit"><input type="date"></form></td>
                 </tr>
             </table>
@@ -40,11 +40,11 @@
                     <img src="image/book_cover.png" alt="book cover">
                 </div>
                 <div class="order__content-book-text">
-                    <div class="book__name">Book: Book_name</div>
-                    <div class="book__author">Author: Author</div>
+                    <div class="book__name">Book: {{ book.name }}</div>
+                    <div class="book__author">Author: {{ book.authors.first }}</div>
                 </div>
                 <div class="order__content-btn-book">
-                    <a class="btn btn-book" href="#">About book</a>
+                    <a class="btn btn-book" href="{% url 'book_by_id' order.book.id %}">About book</a>
                 </div>
             </div>
             <div class="order__content-user">
@@ -52,17 +52,17 @@
                     <img src="image/username.png" alt="user avatar">
                 </div>
                 <div class="order__content-user-text">
-                    <div class="user__fname">First name: Pasha</div>
-                    <div class="user__email">Email: neofobos@gmail.com</div>
+                    <div class="user__fname">First name: {{ user.first_name }}</div>
+                    <div class="user__email">Email: {{ user.email }}</div>
                 </div>
                 <div class="order__content-btn-user">
-                    <a class="btn btn-user" href="#">User profile</a>
+                    <a class="btn btn-user" href="{% %}">User profile</a>
                 </div>
             </div>
 
         </div>
         <div class="confirmation__buttons">
-            <a href="#" class="btn btn-confirm">Close order</a>
+            <a href="#" type="submit" class="btn btn-confirm">Close order</a>
             <a href="#" class="btn btn-cancel">Cancel</a>
         </div>
     </div>

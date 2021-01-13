@@ -12,6 +12,7 @@
         <h1>Update the order</h1>
     </div>
     <form class="input__form" action="" method="POST">
+        {% csrf_token %}
             <div class="input__form-order">
                 <div class="form__label">User: </div>
                 <div class="form__value">Username</div>

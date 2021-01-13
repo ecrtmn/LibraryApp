@@ -25,7 +25,7 @@
                 <img src="{{ book.book_cover_or_default }}" alt="book cover">
             </div>
             <div class="order">
-                <a class="btn btn-green" href="#">Order</a>
+                <a class="btn btn-green" href="{% url 'order_on_click' book.id %}">Order</a>
             </div>
         </div>
         <div class="book__holder-text">

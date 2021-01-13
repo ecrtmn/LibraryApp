@@ -14,6 +14,8 @@ def book_exist(id):
 
 def main_page(request):
     books = Book.get_all()
+    for book in books:
+        print(book.authors.all())
     # books_by_three = [books[x: x + 3] for x in range(0, len(books), 3)]  # test feature
     return render(request, 'books_.html', context={'books': books})
 
@@ -52,5 +54,3 @@ def book_delete(request, id):
 
     Book.delete_by_id(book_id=id)
     return redirect('books_main')
-
-    pass
