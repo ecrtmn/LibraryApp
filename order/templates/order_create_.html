@@ -12,34 +12,27 @@
         <h1>Create an order</h1>
     </div>
     <form class="input__form" action="" method="POST">
+        {% csrf_token %}
             <div class="input__form-order">
                 <label class="form__label" for="user">
                     User:
                 </label>
-                <select name="user" id="user">
-                    <option value="1">option 1</option>
-                    <option value="2">option 2</option>
-                    <option value="3">option 3</option>
-                </select>
+                {{ form.user }}
             </div>
             <div class="input__form-order">
                 <label class="form__label" for="book">
                     Book:
                 </label>
-                <select name="book" id="book">
-                    <option value="1">option 1</option>
-                    <option value="2">option 2</option>
-                    <option value="3">option 3</option>
-                </select>
+                {{ form.book }}
             </div>
             <div class="input__form-order">
                 <label class="form__label" for="planned_end_at">
                     Planned end date:
                 </label>
-                <input type="date" name="planned_end_at" id="planned_end_at" class="form-control planned-end-title">
+                {{ form.planned_end_at }}
             </div>
         <div class="input__form-buttons">
-            <button class= "btn btn-confirm" type="button">
+            <button class= "btn btn-confirm" type="submit">
                 Confirm
             </button>
             <button class= "btn btn-cancel" type="button">

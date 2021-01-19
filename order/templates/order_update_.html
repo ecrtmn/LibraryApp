@@ -15,33 +15,33 @@
         {% csrf_token %}
             <div class="input__form-order">
                 <div class="form__label">User: </div>
-                <div class="form__value">Username</div>
+                <div class="form__value">{{ order.user.first_name }}</div>
             </div>
             <div class="input__form-order">
                 <div class="form__label">Book: </div>
-                <div class="form__value">Bookname</div>
+                <div class="form__value">{{ order.book.name }}</div>
             </div>
             <div class="input__form-order">
                 <div class="form__label">Start date: </div>
-                <div class="form__value">"13-12-2020"</div>
+                <div class="form__value">{{ order.created_at }}</div>
             </div>
             <div class="input__form-order">
                 <label class="form__label" for="planned_end_at">
                     Planned end date:
                 </label>
-                <input type="date" name="planned_end_at" id="planned_end_at" class="form-control planned-end-title">
+                {{ form.planned_end_at }}
             </div>
             <div class="input__form-order">
                 <label class="form__label" for="end_at">
                     End date:
                 </label>
-                <input type="date" name="end_at" id="end_at" class="form-control end_at-title">
+                {{ form.end_at }}
             </div>
         <div class="input__form-buttons">
-            <button class= "btn btn-confirm" type="button">
+            <button class="btn btn-confirm" type="submit">
                 Confirm
             </button>
-            <button class= "btn btn-cancel" type="button">
+           <button class="btn btn-cancel" type="button" onClick="javascript:history.go(-1);">
                 Back
             </button>
         </div>

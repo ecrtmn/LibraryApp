@@ -192,12 +192,16 @@
                 <nav class="navlist">
                     <ul>
                         <li><a class="header-links" href="{% url 'authors_all' %}">Authors</a></li>
-                        <li><a class="header-links" href="#">Orders</a></li>
+                        {% if request.user.role %}
+                        <li><a class="header-links" href="{% url 'orders_all' %}">Orders</a></li>
+                        {% else %}
+                        <li><a class="header-links" href="{% url 'orders_my' %}">Orders</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
                 <div class="header__search">
-                    <form>
-                        <input type="text" placeholder="Search">
+                    <form action="{% url 'books_main' %}">
+                        <input type="text" placeholder="Search a book" name="search">
                         <button type="submit">
                             <svg viewBox="0 0 30.2 30.2">
                                 <path d="M20.2 3.5a11.8 11.8 0 10-1.6 18c0 .5.3 1 .7 1.3l6.7 6.7a2.5 2.5 0 103.5-3.5l-6.7-6.7c-.4-.4-.8-.6-1.3-.7 3.2-4.6 2.8-11-1.3-15.1zM18 18A8.8 8.8 0 115.6 5.6 8.8 8.8 0 0118 18z"/>
@@ -207,7 +211,7 @@
                 </div>
                 <div class="login-block">
                     {% if request.user.is_authenticated %}
-                    <a id="user-btn" class="login-block__button header-links" href="{% url 'my_user' %}">{{ user.first_name }}</a>
+                    <a id="user-btn" class="login-block__button header-links" href="{% url 'my_user' %}">{{ request.user.first_name }}</a>
                     <a id="logout-btn" class="login-block__button header-links" href="{% url 'custom_logout' %}">Logout</a>
                     {% else %}
                     <a id="login-btn" class="login-block__button header-links" href="{% url 'custom_login' %}">Sign In</a>
@@ -252,7 +256,7 @@
         </div>
     </footer>
     {% block script %}
-    <script src="script.js"></script>
+<!--    <script src="{% static 'js/script_reload_page.js' %}"></script>-->
     {% endblock %}
 </body>
 </html>

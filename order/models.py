@@ -1,8 +1,8 @@
 from django.db import models, DataError, IntegrityError
-from django.shortcuts import reverse
+from django.shortcuts import reverse, redirect
 from authentication.models import CustomUser
 from book.models import Book
-
+from datetime import datetime
 
 
 class Order(models.Model):
@@ -69,7 +69,7 @@ class Order(models.Model):
 
     @staticmethod
     def get_not_returned_books():
-        not_returned = list(Order.objects.get(end_at=None))
+        not_returned = list(Order.objects.filter(end_at=None))
         return not_returned
 
     @staticmethod
@@ -87,6 +87,10 @@ class Order(models.Model):
             obj.delete()
             return True
         return False
+
+    def close_order(self):
+        if not self.end_at:
+            self.update(end_at=datetime.now())
 
     def get_absolute_url(self):
         return reverse('order_by_id', kwargs={'id': self.id})

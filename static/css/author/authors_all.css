@@ -8,12 +8,17 @@
 .create__buttons {
     position: fixed;
     border: 1px solid rgb(200, 200, 200);
+    background-color: white;
     border-radius: 10px;
     opacity: 50%;
     display: flex;
     bottom: 110px;
     right: 10px;
     flex-direction: column;
+}
+
+.author-title {
+    text-align: center;
 }
 
 .create__buttons a {

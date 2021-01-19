@@ -7,24 +7,26 @@
 
 {% block moderate %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/book/books.css' %}">
+{% if request.user.role %}
 <div class="create__buttons">
-    <a href="#" class="btn btn-create-book">Create Book</a>
-    <a href="#" class="btn btn-create-author">Create Author</a>
-    <a href="#" class="btn btn-create-order">Create Order</a>
+    <a href="{% url 'book_create' %}" class="btn btn-create-book">Create Book</a>
+    <a href="{% url 'author_create' %}" class="btn btn-create-author">Create Author</a>
+    <a href="{% url 'order_create' %}" class="btn btn-create-order">Create Order</a>
 </div>
+{% endif %}
 <section class="hero-slider">
     <div class="container">
-        <ul class="slider">
-            <li class="slide slide-1">
+        <div class="slider">
+            <div class="slide slide-1 active">
                 <img src="{% static 'media/slider_1.jpg' %}" alt="slide one">
-            </li>
-            <li class="slide slide-2">
+            </div>
+            <div class="slide slide-2">
                 <img src="{% static 'media/slider_2.jpg' %}" alt="slide two">
-            </li>
-            <li class="slide slide-3">
+            </div>
+            <div class="slide slide-3">
                 <img src="{% static 'media/slider_3.jpg' %}" alt="slide three">
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
@@ -32,34 +34,14 @@
 
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/book/books.css' %}">
-<div class="books__listing">
-    {% for book in books %}
-    <div class="book">
-        <div class="book__image">
-            <img class="book__cover" src="{{ book.book_cover_or_default }}" alt="book cover">
-        </div>
-        <div class="book__text">
-            <div class="book__text-info">
-                <div class="book__text-row">
-                    <h3 class="name">Name: </h3>
-                    <span class="value">{{ book.name }}</span>
-                </div>
-                <div class="book__text-row">
-                    <h3 class="name">Author: </h3>
-                    <span class="value">{{ book.authors.first }}</span>
-                </div>
-                <div class="book__text-row">
-                    <h3 class="name">Description: </h3>
-                    <span class="value">{{ book.description }}</span>
-                </div>
-            </div>
-           <div class="book__text-buttons">
-            <a href="{{ book.get_absolute_url }}" class="btn btn-grey ">More</a>
-            <a href="{% url 'order_on_click' book.id %}" class="btn btn-green">Order</a>
-           </div>
-        </div>
-    </div>
-    {% endfor %}
+<div class="books__listing" data-books-length="{{ books_count }}" data-per-page="{{ books_per_page }}">
+    {% include 'load_more.html' %}
 </div>
-<button class="btn btn-more btn-black">Show more</button>
+{% if not flag %}
+<button id="show-more" class="btn btn-more btn-black">Show more</button>
+{% endif %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/main.js' %}"></script>
 {% endblock %}

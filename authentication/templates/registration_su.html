@@ -1,0 +1,62 @@
+{% extends 'base_.html' %}
+{% load static %}
+
+{% block title %}
+    BunnyLib | Registration
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/authentication/registration.css' %}">
+<div class="user__create">
+    <div class="user__login-title">
+        <h1>Create new account</h1>
+    </div>
+    <form class="input__form login--form" action="" method="POST">
+        {% csrf_token %}
+        <div class="input__form-user">
+            <label class="form__label" for="first_name">
+                <i class="fas fa-user"></i>
+            </label>
+            {{ form.first_name }}
+        </div>
+        <div class="input__form-user">
+            <label class="form__label" for="last_name">
+                <i class="fas fa-user"></i>
+            </label>
+            {{ form.last_name }}
+        </div>
+        <div class="input__form-user">
+            <label class="form__label" for="email">
+                <i class="fas fa-envelope"></i>
+            </label>
+            {{ form.email }}
+        </div>
+        <div class="input__form-user">
+            <label class="form__label" for="password">
+                <i class="fas fa-key"></i>
+            </label>
+            {{ form.password }}
+        </div>
+        {% for field, error in form.errors.items %}
+             <div class="input__error">{{ error }}</div>
+        {% endfor %}
+        <div class="input__form-buttons">
+            <button class= "btn btn-login" type="submit">
+                Register
+            </button>
+        </div>
+        <div class="input__form-message">Already have an account? <a href="{% url 'custom_login' %}" class="">Sign In</a></div>
+    </form>
+    {% if form.errors %}
+    <div class="password__must__contain">
+        <p>Your password must contain: </p>
+        <ul>
+            <li>- At least 6 characters;</li>
+            <li>- At least 1 uppercase letter;</li>
+            <li>- At least 1 lowercase letter;</li>
+            <li>- At least 1 digit;</li>
+        </ul>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

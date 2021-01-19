@@ -97,7 +97,7 @@ td {
     border: 1px solid gray;
     box-shadow: 10px 5px 5px gray;
     border-radius: 5px;
-
+    
 }
 
 .order__content-book-cover {
@@ -129,13 +129,14 @@ td {
 .order__content-btn-book a {
     width: 100%;
     padding: 5px;
-    color:rgb(46, 178, 27)
+    color:rgb(46, 178, 27);
+    transition: .3s;
 }
 
 .order__content-btn-book a:hover {
     background-color: rgb(46, 178, 27);
     color: white;
-}
+} 
 
 .order__content-user-img {
     margin: 30px auto 30px auto;
@@ -148,6 +149,7 @@ td {
 .order__content-user-img img {
     height: 100%;
     width: 100%;
+    object-fit:cover;
 }
 
 .order__content-user-text .user__fname {
@@ -169,13 +171,14 @@ td {
 .order__content-btn-user a {
     width: 100%;
     padding: 5px;
-    color:rgb(46, 178, 27)
+    color:rgb(46, 178, 27);
+    transition: .3s;
 }
 
 .order__content-btn-user a:hover {
     background-color: rgb(46, 178, 27);
     color: white;
-}
+} 
 
 .confirmation__buttons {
     display: flex;
@@ -183,13 +186,14 @@ td {
     justify-content: center;
 }
 
-.confirmation__buttons a {
+.confirmation__buttons button{
     margin: 30px;
     padding: 15px;
 }
 
 .btn-confirm {
     color: teal;
+    transition: .3s;
 }
 
 .btn-confirm:hover {
@@ -199,9 +203,20 @@ td {
 
 .btn-cancel {
     color: tomato;
+    transition: .3s;
 }
 
 .btn-cancel:hover {
     background-color: tomato;
     color: white;
+}
+
+.input__error {
+    max-width: 300px;
+    margin: 10px auto;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    background-color: tomato;
 }

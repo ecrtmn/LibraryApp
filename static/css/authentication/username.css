@@ -44,6 +44,18 @@
     background-color: teal;
 }
 
+.btn-more {
+    padding: 5px;
+    color: teal;
+    transition: .3s;
+}
+
+.btn-more:hover {
+    color: white;
+    background-color: teal;
+}
+
+
 .btn-delete {
     padding: 5px;
     color: tomato;
@@ -86,6 +98,10 @@
     text-align: center;
 }
 
+.user__last_orders {
+    text-align: center;
+}
+
 
 .user__text {
     margin: 10px 0 10px 30px;
@@ -108,4 +124,26 @@ th, td {
 
 tr:nth-child(even) {
     background-color: rgb(190, 190, 190);
+}
+
+.message {
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 10px auto;
+    padding: 5px;
+}
+
+
+.info {
+    background-color: teal;
+}
+
+.error {
+    background-color: tomato;
+}
+
+.success {
+    background-color: teal;
 }

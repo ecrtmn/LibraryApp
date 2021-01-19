@@ -75,7 +75,7 @@ class CustomUser(AbstractBaseUser):
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     role = models.IntegerField(default=0, choices=ROLE_CHOICES)
     is_active = models.BooleanField(default=False)
-    photo = models.ImageField(null=True, blank=True)
+    photo = models.ImageField(null=True, blank=True, default='default_user.png')
 
     REQUIRED_FIELDS = []
     USERNAME_FIELD = 'email'

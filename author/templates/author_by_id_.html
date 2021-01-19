@@ -7,10 +7,12 @@
 
 {% block moderate %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/author/author_by_id.css' %}">
+{% if request.user.role %}
 <div class="moderate__buttons">
     <a href="{% url 'author_update' author.id %}" class="btn btn-edit">Edit</a>
     <a href="{% url 'author_delete' author.id %}" class="btn btn-delete">Delete</a>
 </div>
+{% endif %}
 {% endblock %}
 
 {% block content %}

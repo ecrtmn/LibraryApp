@@ -10,9 +10,14 @@
 <div class="user__holder">
     <div class="moderate__buttons">
         <ul>
+            {% if request.user.email != user.email and request.user.role %}
+            <li><a href="{% url 'su_user_update' user.id %}" class="btn btn-edit">Edit profile</a></li>
+            <li><a href="{% url 'su_user_delete' user.id %}" class="btn btn-delete">Delete</a></li>
+            {% else %}
             <li><a href="{% url 'user_update' %}" class="btn btn-edit">Edit profile</a></li>
             <li><a href="{% url 'change_password' %}" class="btn btn-pass">Change password</a></li>
             <li><a href="{% url 'user_delete' %}" class="btn btn-delete">Delete</a></li>
+            {% endif %}
         </ul>
     </div>
     <div class="user-title">
@@ -36,8 +41,12 @@
             </div>
         </div>
     </div>
+    {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }} message" {% endif %}>{{ message }}</div>
+    {% endfor %}
     <div class="orders">
         <div class="container">
+            <div class="user__last_orders"><h3>Your last orders</h3></div>
             <div class="user__orders">
                 <table>
                     <tr>
@@ -46,6 +55,7 @@
                         <th>Start date</th>
                         <th>Planned end date</th>
                         <th>End date</th>
+                        <th>About</th>
                     </tr>
                     {% for order in orders %}
                     <tr>
@@ -54,6 +64,7 @@
                         <td>{{ order.created_at }}</td>
                         <td>{{ order.planned_end_at }}</td>
                         <td>{{ order.end_at }}</td>
+                        <td><a class="btn btn-more" href="{% url 'order_by_id' order.id %}">More</a></td>
                     </tr>
                     {% endfor %}
                 </table>

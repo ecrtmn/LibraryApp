@@ -20,7 +20,7 @@ class Author(models.Model):
     surname = models.CharField(blank=True, max_length=20)
     patronymic = models.CharField(blank=True, max_length=20)
     bio = models.TextField(blank=True)
-    photo = models.ImageField(null=True, blank=True)
+    photo = models.ImageField(null=True, blank=True, default='default_author.png')
 
     def author_photo_or_default(self, default_path="default_author.png"):
         if self.photo:

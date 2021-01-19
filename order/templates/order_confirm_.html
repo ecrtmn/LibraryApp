@@ -15,9 +15,13 @@
         <form action="" method="POST">
             {% csrf_token %}
             <div class="order__content-order">
+                {% if form.errors %}
+                <div class="input__error">
                 {% for value, error in form.errors.items %}
                     {{ error }}
                 {% endfor %}
+                </div>
+                {% endif %}
                 <table>
                     <tr>
                         <th>Enter your planned order end date</th>
@@ -66,10 +70,3 @@
 </div>
 {% endblock %}
 
-{% block script %}
-<script>
-$(document).ready(function() {
-    $('.datepicker').datepicker();
-});
-</script>
-{% endblock %}

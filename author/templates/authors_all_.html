@@ -7,15 +7,20 @@
 
 {% block moderate %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/author/authors_all.css' %}">
+{% if request.user.role %}
 <div class="create__buttons">
-    <a href="#" class="btn btn-create-book">Create Book</a>
-    <a href="#" class="btn btn-create-author">Create Author</a>
-    <a href="#" class="btn btn-create-order">Create Order</a>
+    <a href="{% url 'book_create' %}" class="btn btn-create-book">Create Book</a>
+    <a href="{% url 'author_create' %}" class="btn btn-create-author">Create Author</a>
+    <a href="{% url 'order_create' %}" class="btn btn-create-order">Create Order</a>
 </div>
+{% endif %}
 {% endblock %}
 
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/author/authors_all.css' %}">
+<div class="author-title">
+    <h1>Authors</h1>
+</div>
 <div class="authors__listing">
     {% for author in authors %}
     <div class="author">

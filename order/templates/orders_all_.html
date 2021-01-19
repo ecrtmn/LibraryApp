@@ -7,11 +7,13 @@
 
 {% block moderate %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/order/orders_all.css' %}">
+{% if request.user.role %}
 <div class="create__buttons">
-    <a href="#" class="btn btn-create-book">Create Book</a>
-    <a href="#" class="btn btn-create-author">Create Author</a>
-    <a href="#" class="btn btn-create-order">Create Order</a>
+    <a href="{% url 'book_create' %}" class="btn btn-create-book">Create Book</a>
+    <a href="{% url 'author_create' %}" class="btn btn-create-author">Create Author</a>
+    <a href="{% url 'order_create' %}" class="btn btn-create-order">Create Order</a>
 </div>
+{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -19,7 +21,13 @@
 <div class="order__holder">
     <div class="moderate__buttons">
         <ul>
-            <li><a href="" class="btn btn-create">Create order</a></li>
+            {% if request.user.role %}
+            <li><a href="{% url 'orders_all' %}" class="btn btn-create">Orders all</a></li>
+            <li><a href="{% url 'orders_not_returned' %}" class="btn btn-create">Orders not returned</a></li>
+            {% else %}
+            <li><a href="{% url 'orders_my' %}" class="btn btn-create">Orders all</a></li>
+            <li><a href="{% url 'orders_my_not_returned' %}" class="btn btn-create">Orders not returned</a></li>
+            {% endif %}
         </ul>
     </div>
     <div class="order-title">
@@ -46,7 +54,7 @@
                         <td>{{ order.created_at }}</td>
                         <td>{{ order.planned_end_at }}</td>
                         <td>{{ order.end_at }}</td>
-                        <td><a href="#" class="btn btn-more">More</a></td>
+                        <td><a href="{% url 'order_by_id' order.id %}" class="btn btn-more">More</a></td>
                     </tr>
                     {% endfor %}
                 </table>

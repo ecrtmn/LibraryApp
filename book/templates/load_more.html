@@ -1,0 +1,28 @@
+{% load static %}
+{% for book in books_six %}
+<div class="book">
+    <div class="book__image">
+        <img class="book__cover" src="{{ book.book_cover_or_default }}" alt="book cover">
+    </div>
+    <div class="book__text">
+        <div class="book__text-info">
+            <div class="book__text-row">
+                <h3 class="name">Name: </h3>
+                <span class="value">{{ book.name }}</span>
+            </div>
+            <div class="book__text-row">
+                <h3 class="name">Author: </h3>
+                <span class="value">{{ book.authors.first }}</span>
+            </div>
+            <div class="book__text-row">
+                <h3 class="name">Description: </h3>
+                <span class="value">{{ book.description }}</span>
+            </div>
+        </div>
+       <div class="book__text-buttons">
+        <a href="{{ book.get_absolute_url }}" class="btn btn-grey ">More</a>
+        <a href="{% url 'order_on_click' book.id %}" class="btn btn-green">Order</a>
+       </div>
+    </div>
+</div>
+{% endfor %}

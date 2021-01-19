@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 from .models import Author
 from .forms import AuthorForm
+from authentication.decorators import if_user_auth, user_is_staff
 
 
 def author_exist(id):
@@ -29,6 +30,8 @@ def author_by_id(request, id):
                                                          'number_of_books': numbers_of_books})
 
 
+@if_user_auth
+@user_is_staff
 def author_create(request):
     author_form = AuthorForm()
     if request.method == 'POST':
@@ -39,6 +42,8 @@ def author_create(request):
     return render(request, 'author_create_.html', context={'form': author_form})
 
 
+@if_user_auth
+@user_is_staff
 def author_update(request, id):
     author_exist(id)  # validation
 
@@ -52,6 +57,8 @@ def author_update(request, id):
     return render(request, 'author_update_.html', context={'form': author_form})
 
 
+@if_user_auth
+@user_is_staff
 def author_delete(request, id):
     author_exist(id)  # validation
 
