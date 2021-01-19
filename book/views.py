@@ -10,7 +10,6 @@ def book_exist(id):
         get_object_or_404(Book, id=id)
     except Book.DoesNotExist:
         raise Http404('Book does not exist')
-        # return redirect('books_main')
 
 
 def main_page(request):
@@ -30,7 +29,6 @@ def main_page(request):
             book_by_six = Book.get_all()[first:second]
             return render(request, 'load_more.html', context={'books_six': book_by_six})
         book_by_six = Book.get_all()[first:second]
-    # books_by_three = [books[x: x + 3] for x in range(0, len(books), 3)]  # test feature
     return render(request, 'books_.html', context={'books_six': book_by_six,
                                                    "flag": flag_search,
                                                    "books_count": books_count,

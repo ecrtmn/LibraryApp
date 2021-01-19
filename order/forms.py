@@ -1,6 +1,5 @@
 from django import forms
 from .models import Order
-from bootstrap_datepicker_plus import DatePickerInput
 
 
 class DateInput(forms.DateInput):

@@ -1,20 +1,9 @@
 from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth.models import User
 from .models import CustomUser
 from django import forms
 
 
 class UserForm(forms.ModelForm):
-    # password1 = forms.CharField(max_length=16, widget=forms.PasswordInput(attrs={
-    #     'class': 'form-control',
-    #     'placeholder': 'Your password',
-    #     'label': 'password'
-    #     }))
-    # password2 = forms.CharField(max_length=16, widget=forms.PasswordInput(attrs={
-    #     'class': 'form-control',
-    #     'placeholder': 'Password confirm',
-    #     'label': 'password confirmation'
-    # }))
     class Meta:
         model = CustomUser
         fields = '__all__'

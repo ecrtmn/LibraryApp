@@ -22,9 +22,3 @@ class BookForm(forms.ModelForm):
             'cover': forms.FileInput(attrs={'class': 'form-control',
                                             'id': 'file'}),
         }
-
-
-# class BookUpdate(forms.ModelForm):
-#     class Meta:
-#         model = Book
-#         fields = '__all__'

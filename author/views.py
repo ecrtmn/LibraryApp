@@ -10,7 +10,6 @@ def author_exist(id):
         get_object_or_404(Author, id=id)
     except Author.DoesNotExist:
         raise Http404('Author does not exist')
-        # return redirect('authors_all')
 
 
 def authors_all(request):
