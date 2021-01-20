@@ -1,2 +1,2 @@
 # LibraryApp
-There will be a description.
+CRUD service of library application. 
