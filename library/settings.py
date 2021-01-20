@@ -26,7 +26,7 @@ SECRET_KEY = '*b#xy%1ce&+ckp#@sa*!ph#3x45s4b*yen)7e*x82j^_dar)*e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['ptverdokhleb-library.herokuapp.com/', '127.0.0.1']
+ALLOWED_HOSTS = ['ptverdokhleb-library.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
