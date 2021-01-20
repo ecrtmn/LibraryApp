@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    BunnyLib | Author {{ author.patronymic }}
+    BunnyLib | {{ author.patronymic }}
 {% endblock %}
 
 {% block moderate %}
@@ -39,9 +39,6 @@
             </div>
             <div class="author__row">
                 Number of books : <span class="author__row-all__value">{{ number_of_books }}</span>
-            </div>
-            <div class="author__row">
-                Number of available books : <span class="author__row-available__value">10</span>
             </div>
         </div>
     </div>

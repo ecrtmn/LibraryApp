@@ -21,13 +21,12 @@ from django.conf import settings
 from library.views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('books/', include('book.urls')),
     path('orders/', include('order.urls')),
-    path('user/', include('authentication.urls')),
+    path('users/', include('authentication.urls')),
     path('authors/', include('author.urls')),
+    path('about_page/', about_page, name='about_page'),
     path('', main_page, name='main_page'),
-    path('404', not_found, name='not_found')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

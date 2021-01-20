@@ -18,7 +18,7 @@ class Book(models.Model):
         return default_path
 
     def __str__(self):
-        return f'Book: {self.name}'
+        return f'{self.name}'
 
     def __repr__(self):
         return f'{self.__class__.__name__}(id={self.id})'

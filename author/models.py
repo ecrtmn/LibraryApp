@@ -16,7 +16,7 @@ class Author(models.Model):
         return default_path
 
     def __str__(self):
-        return f'{self.name}, {self.surname} ({self.patronymic})'
+        return f'{self.patronymic}'
 
     def __repr__(self):
         return f'{self.__class__.__name__}(id={self.id})'

@@ -1,0 +1,22 @@
+{% extends 'base_.html' %}
+{% load static %}
+
+{% block content %}
+<div class="about">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/misc/about.css' %}">
+    <div class="about__title">
+        <h1>About</h1>
+    </div>
+    <div class="about__context">
+        Hello, this is my realisation of library application.
+        <br>
+        <br>
+        As user you can watch all books, authors and make orders if you interesting into some book. You can close order when you come back the book to the "library".
+        <br>
+        As superuser you can create, update and delete books, authors, orders and users.
+        <br>
+        <br>
+        Now I'am looking for job so feel free to connect with me.
+    </div>
+</div>
+{% endblock %}
