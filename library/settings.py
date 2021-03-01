@@ -138,4 +138,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/root')
 
-django_heroku.settings(locals(), staticfiles=False)
+django_heroku.settings(locals(), staticfiles=True)
