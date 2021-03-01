@@ -1,0 +1,10 @@
+.container {
+    width: 100%;
+    max-width: 1140px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.about__title {
+    text-align: center;
+}

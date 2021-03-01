@@ -1,0 +1,123 @@
+.container {
+    width: 100%;
+    max-width: 1140px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.create__buttons {
+    position: fixed;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 10px;
+    opacity: 50%;
+    display: flex;
+    bottom: 110px;
+    right: 10px;
+    flex-direction: column;
+}
+
+.create__buttons a {
+    margin: 10px;
+    color: teal;
+}
+
+.create__buttons:hover {
+    opacity: 100%;
+}
+
+.create__buttons a:hover {
+    margin: 10px;
+    color: white;
+    background-color: teal;
+}
+
+.authors__listing {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -12px;
+}
+
+.author {
+    display: flex;
+    width: calc(33.33% - 24px);
+    height: 250px;
+    border-color: black;
+    border-style: groove;
+    margin: 0 12px 20px;
+}
+
+.author__image {
+    flex-shrink: 0;
+    width: 156px;
+    height: 100%;
+}
+
+.author__image img{
+    width: 100%;
+    height: 100%;
+}
+
+.author__text {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 10px;
+    font-size: 10px;
+    width: 194px;
+}
+
+.author__text-info {
+    margin-bottom: 15px;
+}
+
+.author__text-row {
+    margin-bottom: 10px;
+}
+
+.author__text-row:last-child {
+    margin-bottom: 0;
+}
+
+.author__text-row .name{
+    display: inline;
+    font-weight: 700;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 15px;
+    border-radius: 6px;
+    border: 1px solid;
+    font-size: 15px;
+    line-height: 17px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-grey {
+    color: grey;
+    width: 100%;
+    transition: .3s;
+}
+
+.btn-grey:hover {
+    background-color: grey;
+    color: white;
+}
+
+.btn-more {
+    width: 100%;
+    padding: 8px 15px;
+}
+
+.author__text-buttons {
+    margin-top: auto;
+    width: 100%;
+}
+
+.author__text-buttons .btn {
+    margin-right: 10px;
+}
+
+.author__text-buttons .btn:last-child {
+    margin-right: 0;
+}
