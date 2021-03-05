@@ -1,14 +1,15 @@
 from django.db import models, IntegrityError, DataError
 from django.urls import reverse
+from cloudinary.models import CloudinaryField
 
 
 class Author(models.Model):
-
     name = models.CharField(blank=True, max_length=20)
     surname = models.CharField(blank=True, max_length=20)
     patronymic = models.CharField(blank=True, max_length=20)
     bio = models.TextField(blank=True)
-    photo = models.ImageField(null=True, blank=True, default='default_author.png')
+    # photo = models.ImageField(null=True, blank=True, default='default_author.png')
+    photo = CloudinaryField('image', blank=True, null=True)
 
     def author_photo_or_default(self, default_path="default_author.png"):
         if self.photo:

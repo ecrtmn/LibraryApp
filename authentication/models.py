@@ -5,6 +5,7 @@ from django.db import models, IntegrityError
 from django.db.utils import DataError
 from django.urls import reverse
 from authentication.utils import validate_password
+from cloudinary.models import CloudinaryField
 
 ROLE_CHOICES = (
     (0, 'user'),
@@ -40,7 +41,6 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractBaseUser):
-
     first_name = models.CharField(blank=True, max_length=20)
     last_name = models.CharField(blank=True, max_length=20)
     email = models.EmailField(max_length=100, unique=True, validators=[validate_email])
@@ -49,7 +49,8 @@ class CustomUser(AbstractBaseUser):
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     role = models.IntegerField(default=0, choices=ROLE_CHOICES)
     is_active = models.BooleanField(default=False)
-    photo = models.ImageField(null=True, blank=True, default='default_user.png')
+    # photo = models.ImageField(null=True, blank=True, default='default_user.png')
+    photo = CloudinaryField('image', blank=True, null=True)
 
     REQUIRED_FIELDS = []
     USERNAME_FIELD = 'email'
@@ -130,7 +131,7 @@ class CustomUser(AbstractBaseUser):
                password=None,
                role=None,
                is_active=None,
-               photo=None,):
+               photo=None, ):
         if first_name:
             self.first_name = first_name
         if last_name:
@@ -149,7 +150,6 @@ class CustomUser(AbstractBaseUser):
         if photo:
             self.photo = photo
         self.save()
-
 
     @staticmethod
     def get_all():

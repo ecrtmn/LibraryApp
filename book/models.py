@@ -1,6 +1,7 @@
 from django.db import models, IntegrityError, DataError
 from django.shortcuts import reverse
 from author.models import Author
+from cloudinary.models import CloudinaryField
 
 
 class Book(models.Model):
@@ -10,7 +11,8 @@ class Book(models.Model):
     count = models.IntegerField(default=10)
     authors = models.ManyToManyField(Author, related_name='books')
     stars = models.IntegerField(default=0)
-    cover = models.ImageField(upload_to='books_cover', default='default_book.png', blank=True, null=True)
+    # cover = models.ImageField(upload_to='books_cover', default='default_book.png', blank=True, null=True)
+    cover = CloudinaryField('image', blank=True, null=True)
 
     def book_cover_or_default(self, default_path="default_book.png"):
         if self.cover:
